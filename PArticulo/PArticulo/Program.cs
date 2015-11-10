@@ -1,5 +1,5 @@
-using Gtk;
 using System;
+using Gtk;
 using MySql.Data.MySqlClient;
 
 using SerpisAd;
@@ -11,14 +11,16 @@ namespace PArticulo
 		public static void Main (string[] args)
 		{
 			App.Instance.DbConnection = new MySqlConnection (
-				"DataSource=localhost;Database=dbprueba;User ID=root;Password=sistemas"
-				);
+				"Database=dbprueba;Data Source=localhost;Port=3307;User Id=root;Password=sistemas"
+			);
 			App.Instance.DbConnection.Open ();
 
 			Application.Init ();
 			MainWindow win = new MainWindow ();
 			win.Show ();
 			Application.Run ();
+
+			App.Instance.DbConnection.Close ();
 		}
 	}
 }

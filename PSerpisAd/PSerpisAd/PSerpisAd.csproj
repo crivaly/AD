@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1C7AD7E2-320F-4238-B994-C3E770307B61}</ProjectGuid>
+    <ProjectGuid>{E436B7C9-E3B4-452F-8D5A-E9FBE448A2B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>PSerpisAd</RootNamespace>
     <AssemblyName>PSerpisAd</AssemblyName>
@@ -30,11 +30,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Private>False</Private>
       <Package>gtk-sharp-2.0</Package>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Private>False</Private>
       <Package>gtk-sharp-2.0</Package>
@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="DbCommandExtensions.cs" />
+    <Compile Include="PersisterHelper.cs" />
+    <Compile Include="QueryResult.cs" />
+    <Compile Include="TreeViewHelper.cs" />
     <Compile Include="ComboBoxHelper.cs" />
-    <Compile Include="ComboBoxExtensions.cs" />
+    <Compile Include="DbCommandHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
