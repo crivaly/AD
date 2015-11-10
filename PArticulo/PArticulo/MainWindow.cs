@@ -3,6 +3,7 @@ using Gtk;
 
 using SerpisAd;
 using PArticulo;
+using System.Collections;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -19,7 +20,36 @@ public partial class MainWindow: Gtk.Window
 		refreshAction.Activated += delegate {
 			fillTreeView();
 		};
+
+		deleteAction.Activated += delegate {
+			object id = GetId(treeView);
+			Console.WriteLine ("click en deleteAction id={0}",GetId(treeView));
+			if (id == null)
+				return;
+
+		};
+		// cada vez que cambia la seleccion salta este evento
+		treeView.Selection.Changed += delegate {
+			Console.WriteLine ("ha pasado un treeView.Selection.Changed");
+			deleteAction.Sensitive = GetId (treeView) != null; //si vuelves a pinchar en el objeto se deshabilitan las acciones
+		};
+		
+
+	}
+		
+
+
 		//newAction.Activated += newActionActivated;
+	
+	public static object GetId(TreeView treeView){
+		TreeIter treeIter;
+		if (!treeView.Selection.GetSelected (out treeIter)) //para que no salten warnings
+			return null;
+		IList row = (IList)treeView.Model.GetValue (treeIter, 0);
+		if (row == null) 
+			return null;
+		//else   - no se pone porque si ha acabado la otra vez no sigue, y si no ha entrado en el if sale por este return
+			return row[0];
 	}
 
 	private void fillTreeView() {
